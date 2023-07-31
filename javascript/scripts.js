@@ -1,22 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('game');
     const game = canvas.getContext('2d');
-    window.addEventListener("load", startGame());
 
-    function startGame() {
     let canvasSize;
+    let elementsSize;
 
+    window.addEventListener("load", setCanvasSize());
+    window.addEventListener("resize", setCanvasSize());
+
+    function setCanvasSize() {
         if (window.innerHeight > window.innerWidth) {
-            canvasSize = window.innerWidth * 0.75;
+            canvasSize = window.innerWidth * 0.7;
         } else {
-            canvasSize = window.innerHeight * 0.75;
+            canvasSize = window.innerHeight * 0.7;
         }
 
-    canvas.setAttribute('width', canvasSize);
-    canvas.setAttribute('height', canvasSize);
+        canvas.setAttribute('width', canvasSize);
+        canvas.setAttribute('height', canvasSize);
 
-    const elementsSize = (canvasSize / 10) - 1;
+        elementsSize = (canvasSize / 10) - 1;
 
+        startGame();
+    }
+
+    function startGame() {
     game.font = elementsSize + "px Verdana" ;
     game.textAlign = "";
 
