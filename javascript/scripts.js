@@ -27,8 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     game.font = elementsSize + "px Verdana" ;
     game.textAlign = "";
 
-    for(let i = 0; i < 10; i++){
-        game.fillText(emojis['X'], elementsSize * i, elementsSize);
+    for(let w = 0; w < 10; w++){
+        for (let h = 1; h <= 10; h++) {
+            game.fillText(emojis['X'], elementsSize * w, elementsSize * h);
+        }
     }
 
     }
