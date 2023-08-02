@@ -1,9 +1,9 @@
 const emojis = {
     '-':' ',
-    'O':'🚍',
+    'O':'🛑',
     'X':'💣',
     'I':'🚏',
-    'PLAYER':'💀',
+    'PLAYER':'🚍',
     'COLLISION':'🔥',
     'GAME_OVER':'👎',
     'WIN':'🏆',

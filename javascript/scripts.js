@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let canvasSize;
     let elementsSize;
+    const playerPos = {
+        x: undefined,
+        y: undefined,
+    };
 
     window.addEventListener("load", setCanvasSize);
     window.addEventListener("resize", setCanvasSize);
@@ -41,9 +45,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 const emoji = emojis[col];
                 const posX = elementsSize * (colI + 1);
                 const posY = elementsSize * (rowI + 1);
+                if(col == "O"){
+                    playerPos.x = posX;
+                    playerPos.y = posY;
+                }
                 game.fillText(emoji, posX, posY);
             });
         });
+
+        movePlayer();
+    }
+
+    function movePlayer(){
+        game.fillText(emojis['PLAYER'], playerPos.x, playerPos.y);
+        movePlayer();
     }
 
     window.addEventListener('keydown', moveKeysDir);
@@ -63,12 +78,20 @@ document.addEventListener('DOMContentLoaded', () => {
             moveDown();
         }
     }
-    function moveUp(event){
+    function moveUp(){
+        playerPos.y -= elementsSize;
+        movePlayer();
     }
-    function moveLeft(event){
+    function moveLeft(){
+        playerPos.x -= elementsSize;
+        movePlayer();
     }
-    function moveRight(event){
+    function moveRight(){
+        playerPos.x += elementsSize;
+        movePlayer();
     }
-    function moveDown(event){
+    function moveDown(){
+        playerPos.y += elementsSize;
+        movePlayer();
     }
 });
