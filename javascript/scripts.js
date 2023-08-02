@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('game');
     const game = canvas.getContext('2d');
+    const btnUp = document.getElementById('up');
+    const btnLeft = document.getElementById('left');
+    const btnRight = document.getElementById('right');
+    const btnDown = document.getElementById('down');
 
     let canvasSize;
     let elementsSize;
@@ -40,5 +44,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 game.fillText(emoji, posX, posY);
             });
         });
+    }
+
+    window.addEventListener('keydown', moveKeysDir);
+    btnUp.addEventListener('click', moveUp);
+    btnLeft.addEventListener('click', moveLeft);
+    btnRight.addEventListener('click', moveRight);
+    btnDown.addEventListener('click', moveDown);
+
+    function moveKeysDir(event){
+        if (event.code == "KeyW" || event.code == "ArrowUp") {
+            moveUp();
+        } else if (event.code == "KeyA" || event.code == "ArrowLeft") {
+            moveLeft();
+        } else if (event.code == "KeyD" || event.code == "ArrowRight") {
+            moveRight();
+        }   else if (event.code == "KeyS" || event.code == "ArrowDown") {
+            moveDown();
+        }
+    }
+    function moveUp(event){
+    }
+    function moveLeft(event){
+    }
+    function moveRight(event){
+    }
+    function moveDown(event){
     }
 });
