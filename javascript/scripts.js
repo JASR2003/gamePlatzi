@@ -40,14 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const mapRows = map.trim().split('\n');
         const mapRowCols = mapRows.map(row => row.trim().split(''));
 
+        game.clearRect(0,0, canvasSize, canvasSize);
+
         mapRowCols.forEach((row, rowI) => {
             row.forEach((col, colI) => {
                 const emoji = emojis[col];
                 const posX = elementsSize * (colI + 1);
                 const posY = elementsSize * (rowI + 1);
                 if(col == "O"){
-                    playerPos.x = posX;
-                    playerPos.y = posY;
+                    if (!playerPos.x && !playerPos.y) {
+                        playerPos.x = posX;
+                        playerPos.y = posY;
+                    }
                 }
                 game.fillText(emoji, posX, posY);
             });
@@ -80,18 +84,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function moveUp(){
         playerPos.y -= elementsSize;
-        movePlayer();
+        startGame();
     }
     function moveLeft(){
         playerPos.x -= elementsSize;
-        movePlayer();
+        startGame();
     }
     function moveRight(){
         playerPos.x += elementsSize;
-        movePlayer();
+        startGame();
     }
     function moveDown(){
         playerPos.y += elementsSize;
-        movePlayer();
+        startGame();
     }
 });
