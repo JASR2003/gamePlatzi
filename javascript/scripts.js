@@ -83,19 +83,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     function moveUp(){
-        playerPos.y -= elementsSize;
-        startGame();
+        if ((playerPos.y - elementsSize) < elementsSize ) {
+        } else {
+            playerPos.y -= elementsSize;
+            startGame();
+        }
     }
     function moveLeft(){
-        playerPos.x -= elementsSize;
-        startGame();
+        if ((playerPos.x - elementsSize) < elementsSize ) {
+        } else {
+            playerPos.x -= elementsSize;
+            startGame();
+        }
     }
     function moveRight(){
-        playerPos.x += elementsSize;
-        startGame();
+        if ((playerPos.x + elementsSize) > canvasSize ) {
+        } else {
+            playerPos.x += elementsSize;
+            startGame();
+        }
     }
     function moveDown(){
-        playerPos.y += elementsSize;
-        startGame();
+        if ((playerPos.y + elementsSize) > canvasSize ) {
+        } else {
+            playerPos.y += elementsSize;
+            startGame();
+        }
     }
 });
