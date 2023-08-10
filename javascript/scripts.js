@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
         x: undefined,
         y: undefined,
     };
+    const finishPos = {
+        x: undefined,
+        y: undefined,
+    }
 
     window.addEventListener("load", setCanvasSize);
     window.addEventListener("resize", setCanvasSize);
@@ -52,6 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         playerPos.x = posX;
                         playerPos.y = posY;
                     }
+                } else if(col == "I"){
+                    finishPos.x = posX;
+                    finishPos.y = posY;
                 }
                 game.fillText(emoji, posX, posY);
             });
@@ -61,9 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function movePlayer(){
+        const giftColX = playerPos.x.toFixed(3) == finishPos.x.toFixed(3);
+        const giftColY = playerPos.y.toFixed(3) == finishPos.y.toFixed(3);
+        const giftCol = giftColX && giftColY;
+
+        if (giftCol) {
+            console.log('Subiste de nivel!');
+            return;
+        }
+
         game.fillText(emojis['PLAYER'], playerPos.x, playerPos.y);
         movePlayer();
-    }
+}
 
     window.addEventListener('keydown', moveKeysDir);
     btnUp.addEventListener('click', moveUp);
