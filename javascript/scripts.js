@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('game');
     const game = canvas.getContext('2d');
     const btnUp = document.getElementById('up');
@@ -16,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         x: undefined,
         y: undefined,
     }
-    const enemiesPos = [];
+    let enemiesPos = [];
 
     window.addEventListener("load", setCanvasSize);
     window.addEventListener("resize", setCanvasSize);
@@ -45,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const mapRows = map.trim().split('\n');
         const mapRowCols = mapRows.map(row => row.trim().split(''));
 
+        enemiesPos = [];
         game.clearRect(0,0, canvasSize, canvasSize);
 
         mapRowCols.forEach((row, rowI) => {
@@ -60,6 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if(col == "I"){
                     finishPos.x = posX;
                     finishPos.y = posY;
+                } else if (col == 'X') {
+                    enemiesPos.push({
+                    x: posX.toFixed(2),
+                    y: posY.toFixed(2),
+                    });
                 }
                 game.fillText(emoji, posX, posY);
             });
@@ -77,8 +82,18 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Subiste de nivel!');
         }
 
+        const enemiesCol = enemiesPos.find( enemy => {
+            const enemyColX = enemy.x.toFixed(2) == playerPos.x.toFixed(2);
+            const enemyColY = enemy.y.toFixed(2) == playerPos.y.toFixed(2);
+            return enemyColX && enemyColY;
+        });
+
+        if (enemiesCol) {
+            console.log('Chocaste');
+        }
+
         game.fillText(emojis['PLAYER'], playerPos.x, playerPos.y);
-}
+    }
 
     window.addEventListener('keydown', moveKeysDir);
     btnUp.addEventListener('click', moveUp);
@@ -125,4 +140,3 @@ document.addEventListener('DOMContentLoaded', () => {
             startGame();
         }
     }
-});
