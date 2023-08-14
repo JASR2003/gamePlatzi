@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         x: undefined,
         y: undefined,
     }
+    const enemiesPos = [];
 
     window.addEventListener("load", setCanvasSize);
     window.addEventListener("resize", setCanvasSize);
@@ -68,17 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function movePlayer(){
-        const giftColX = playerPos.x.toFixed(3) == finishPos.x.toFixed(3);
-        const giftColY = playerPos.y.toFixed(3) == finishPos.y.toFixed(3);
+        const giftColX = playerPos.x.toFixed(2) == finishPos.x.toFixed(2);
+        const giftColY = playerPos.y.toFixed(2) == finishPos.y.toFixed(2);
         const giftCol = giftColX && giftColY;
 
         if (giftCol) {
             console.log('Subiste de nivel!');
-            return;
         }
 
         game.fillText(emojis['PLAYER'], playerPos.x, playerPos.y);
-        movePlayer();
 }
 
     window.addEventListener('keydown', moveKeysDir);
