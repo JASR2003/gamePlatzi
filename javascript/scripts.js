@@ -83,8 +83,8 @@
         }
 
         const enemiesCol = enemiesPos.find( enemy => {
-            const enemyColX = enemy.x.toFixed(2) == playerPos.x.toFixed(2);
-            const enemyColY = enemy.y.toFixed(2) == playerPos.y.toFixed(2);
+            const enemyColX = enemy.x == playerPos.x.toFixed(2);
+            const enemyColY = enemy.y== playerPos.y.toFixed(2);
             return enemyColX && enemyColY;
         });
 
