@@ -7,6 +7,8 @@
 
     let canvasSize;
     let elementsSize;
+    let level = 0;
+
     const playerPos = {
         x: undefined,
         y: undefined,
@@ -40,7 +42,13 @@
         game.textAlign = 'end';
         game.textBaseline = 'bottom';
 
-        const map = maps[0];
+        const map = maps[level];
+
+        if (!map) {
+            gameWin();
+            return;
+        }
+
         const mapRows = map.trim().split('\n');
         const mapRowCols = mapRows.map(row => row.trim().split(''));
 
@@ -79,7 +87,7 @@
         const giftCol = giftColX && giftColY;
 
         if (giftCol) {
-            console.log('Subiste de nivel!');
+            levelWin();
         }
 
         const enemiesCol = enemiesPos.find( enemy => {
@@ -94,6 +102,17 @@
 
         game.fillText(emojis['PLAYER'], playerPos.x, playerPos.y);
     }
+
+    function levelWin() {
+        console.log('Subiste de nivel');
+        level++;
+        startGame();
+    }
+
+    function gameWin() {
+        console.log('¡Terminaste el juego!');
+    }
+
 
     window.addEventListener('keydown', moveKeysDir);
     btnUp.addEventListener('click', moveUp);
