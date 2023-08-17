@@ -8,6 +8,7 @@
     let canvasSize;
     let elementsSize;
     let level = 0;
+    let lives = 3;
 
     const playerPos = {
         x: undefined,
@@ -97,7 +98,7 @@
         });
 
         if (enemiesCol) {
-            console.log('Chocaste');
+            levelFail();
         }
 
         game.fillText(emojis['PLAYER'], playerPos.x, playerPos.y);
@@ -107,6 +108,22 @@
         console.log('Subiste de nivel');
         level++;
         startGame();
+    }
+
+    function levelFail() {
+    console.log('Chocaste');
+    lives--;
+
+    console.log(lives);
+
+    if (lives <= 0) {
+        level = 0;
+        lives = 3;
+    }
+
+    playerPos.x = undefined;
+    playerPos.y = undefined;
+    startGame();
     }
 
     function gameWin() {
