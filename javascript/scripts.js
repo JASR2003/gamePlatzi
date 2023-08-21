@@ -55,8 +55,6 @@
             return;
         }
 
-        const isLife3 = true;
-
         if (!timeStart) {
             timeStart = Date.now();
             timeInterval = setInterval(showTime, 100);
@@ -125,20 +123,21 @@
     }
 
     function levelFail() {
-        console.log('Chocaste');
-        lives--;
-        isLife3 = false;
+    console.log('Chocaste');
+    lives--;
 
-        console.log(lives);
+    console.log(lives);
 
-        if (lives <= 0) {
-            level = 0;
-            lives = 3;
-        }
+    if (lives <= 0) {
+        level = 0;
+        lives = 3;
+        timeStart = Date.now();
+        timeInterval = setInterval(showTime, 100);
+    }
 
-        playerPos.x = undefined;
-        playerPos.y = undefined;
-        startGame();
+    playerPos.x = undefined;
+    playerPos.y = undefined;
+    startGame();
     }
 
     function gameWin() {
