@@ -54,11 +54,13 @@
             gameWin();
             return;
         }
-        if(!timeStart) {
-            timeStart=Date.now();
-            timeInterval=setInterval(showTime,100);
-        }
 
+        const isLife3 = true;
+
+        if (!timeStart) {
+            timeStart = Date.now();
+            timeInterval = setInterval(showTime, 100);
+        }
 
         const mapRows = map.trim().split('\n');
         const mapRowCols = mapRows.map(row => row.trim().split(''));
@@ -66,33 +68,33 @@
         showLives();
 
         enemiesPos = [];
-        game.clearRect(0,0, canvasSize, canvasSize);
+        game.clearRect(0, 0, canvasSize, canvasSize);
 
         mapRowCols.forEach((row, rowI) => {
             row.forEach((col, colI) => {
-                const emoji = emojis[col];
-                const posX = elementsSize * (colI + 1);
-                const posY = elementsSize * (rowI + 1);
-                if(col == "O"){
-                    if (!playerPos.x && !playerPos.y) {
-                        playerPos.x = posX;
-                        playerPos.y = posY;
-                    }
-                } else if(col == "I"){
-                    finishPos.x = posX;
-                    finishPos.y = posY;
-                } else if (col == 'X') {
-                    enemiesPos.push({
-                    x: posX,
-                    y: posY,
-                    });
+            const emoji = emojis[col];
+            const posX = elementsSize * (colI + 1);
+            const posY = elementsSize * (rowI + 1);
+            if (col == "O") {
+                if (!playerPos.x && !playerPos.y) {
+                playerPos.x = posX;
+                playerPos.y = posY;
                 }
-                game.fillText(emoji, posX, posY);
+            } else if (col == "I") {
+                finishPos.x = posX;
+                finishPos.y = posY;
+            } else if (col == 'X') {
+                enemiesPos.push({
+                x: posX,
+                y: posY,
+                });
+            }
+            game.fillText(emoji, posX, posY);
             });
-        });
+         });
 
-        movePlayer();
-    }
+  movePlayer();
+}
 
     function movePlayer(){
         const giftColX = playerPos.x.toFixed(2) == finishPos.x.toFixed(2);
@@ -123,25 +125,25 @@
     }
 
     function levelFail() {
-    console.log('Chocaste');
-    lives--;
-    timeStart=undefined;
+        console.log('Chocaste');
+        lives--;
+        isLife3 = false;
 
-    console.log(lives);
+        console.log(lives);
 
-    if (lives <= 0) {
-        level = 0;
-        lives = 3;
-    }
+        if (lives <= 0) {
+            level = 0;
+            lives = 3;
+        }
 
-    playerPos.x = undefined;
-    playerPos.y = undefined;
-    startGame();
+        playerPos.x = undefined;
+        playerPos.y = undefined;
+        startGame();
     }
 
     function gameWin() {
-        console.log('¡Terminaste el juego!');
         clearInterval(timeInterval);
+        console.log('¡Terminaste el juego!');
     }
 
     function showLives() {
