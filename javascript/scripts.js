@@ -5,11 +5,15 @@
     const btnRight = document.getElementById('right');
     const btnDown = document.getElementById('down');
     const spanLives = document.getElementById('lives');
+    const spanTime = document.getElementById('time');
 
     let canvasSize;
     let elementsSize;
     let level = 0;
     let lives = 3;
+    let timeStart;
+    let timePlayer;
+    let timeInterval;
 
     const playerPos = {
         x: undefined,
@@ -50,6 +54,10 @@
             gameWin();
             return;
         }
+        if(!timeStart) {
+            timeStart=Date.now();timeInterval=setInterval(showTime,100);
+        }
+
 
         const mapRows = map.trim().split('\n');
         const mapRowCols = mapRows.map(row => row.trim().split(''));
@@ -116,6 +124,7 @@
     function levelFail() {
     console.log('Chocaste');
     lives--;
+    timeStart=undefined;
 
     console.log(lives);
 
@@ -131,10 +140,19 @@
 
     function gameWin() {
         console.log('¡Terminaste el juego!');
+        clearInterval(timeInterval);
     }
 
     function showLives() {
         spanLives.innerHTML = emojis["HEART"].repeat(lives)
+    }
+
+    function showTime() {
+        const time = Date.now() - timeStart;
+        const minutes = Math.floor(time / 60000);
+        const seconds = Math.floor((time % 60000) / 1000);
+        const milliseconds = time % 1000;
+        spanTime.innerHTML = `${minutes}:${seconds}.${milliseconds}`;
     }
 
 
