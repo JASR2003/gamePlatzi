@@ -55,7 +55,8 @@
             return;
         }
         if(!timeStart) {
-            timeStart=Date.now();timeInterval=setInterval(showTime,100);
+            timeStart=Date.now();
+            timeInterval=setInterval(showTime,100);
         }
 
 
