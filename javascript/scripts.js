@@ -6,6 +6,7 @@
     const btnDown = document.getElementById('down');
     const spanLives = document.getElementById('lives');
     const spanTime = document.getElementById('time');
+    const spanRecord = document.getElementById('record');
 
     let canvasSize;
     let elementsSize;
@@ -92,7 +93,7 @@
          });
 
   movePlayer();
-}
+    }
 
     function movePlayer(){
         const giftColX = playerPos.x.toFixed(2) == finishPos.x.toFixed(2);
@@ -143,6 +144,21 @@
     function gameWin() {
         clearInterval(timeInterval);
         console.log('¡Terminaste el juego!');
+
+        const recordTime = localStorage.getItem('record_time');
+        const playerTime = Date.now() - timeStart;
+
+        if (recordTime) {
+            if (recordTime >= playerTime) {
+                localStorage.setItem('record_time', playerTime);
+                console.log("record superado");
+            } else {
+                console.log("record no superado");
+            }
+        } else {
+            localStorage.setItem('record_time', playerTime);
+        };
+
     }
 
     function showLives() {
