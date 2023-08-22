@@ -53,7 +53,7 @@
         const map = maps[level];
 
         if (!map) {
-            gameWin();
+            gameWinAndRecordTime();
             return;
         }
 
@@ -143,7 +143,7 @@
     startGame();
     }
 
-    function gameWin() {
+    function gameWinAndRecordTime() {
         clearInterval(timeInterval);
         console.log('¡Terminaste el juego!');
 
