@@ -7,6 +7,7 @@
     const spanLives = document.getElementById('lives');
     const spanTime = document.getElementById('time');
     const spanRecord = document.getElementById('record');
+    const pResult = document.getElementById('result');
 
     let canvasSize;
     let elementsSize;
@@ -59,6 +60,7 @@
         if (!timeStart) {
             timeStart = Date.now();
             timeInterval = setInterval(showTime, 100);
+            showRecord();
         }
 
         const mapRows = map.trim().split('\n');
@@ -151,12 +153,13 @@
         if (recordTime) {
             if (recordTime >= playerTime) {
                 localStorage.setItem('record_time', playerTime);
-                console.log("record superado");
+                pResult.innerHTML = "record superado";
             } else {
-                console.log("record no superado");
+                pResult.innerHTML = "record no superado";
             }
         } else {
             localStorage.setItem('record_time', playerTime);
+            pResult.innerHTML = "primera vez? intenta superar tu marca";
         };
 
     }
@@ -171,6 +174,17 @@
         const seconds = Math.floor((time % 60000) / 1000);
         const milliseconds = time % 1000;
         spanTime.innerHTML = `${minutes}:${seconds}.${milliseconds}`;
+    }
+    function showRecord() {
+    const record_time = localStorage.getItem('record_time');
+    if (record_time) {
+        const minutes = Math.floor(record_time / 60000);
+        const seconds = Math.floor((record_time % 60000) / 1000);
+        const milliseconds = record_time % 1000;
+        spanRecord.innerHTML = `${minutes}:${seconds}.${milliseconds}`;
+    } else {
+        spanRecord.innerHTML = 'Sin registro aún.';
+    }
     }
 
 
