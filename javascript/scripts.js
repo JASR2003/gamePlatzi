@@ -32,9 +32,9 @@
 
     function setCanvasSize() {
         if (window.innerHeight > window.innerWidth) {
-            canvasSize = window.innerWidth * 0.8;
+            canvasSize = window.innerWidth * 0.7;
         } else {
-            canvasSize = window.innerHeight * 0.8;
+            canvasSize = window.innerHeight * 0.7;
         }
 
         canvas.setAttribute('width', canvasSize);
@@ -42,6 +42,8 @@
 
         elementsSize = canvasSize / 10;
 
+        playerPos.x = undefined;
+        playerPos.y = undefined;
         startGame();
     }
 
@@ -78,16 +80,16 @@
             const posY = elementsSize * (rowI + 1);
             if (col == "O") {
                 if (!playerPos.x && !playerPos.y) {
-                playerPos.x = posX;
-                playerPos.y = posY;
+                    playerPos.x = posX;
+                    playerPos.y = posY;
                 }
             } else if (col == "I") {
                 finishPos.x = posX;
                 finishPos.y = posY;
             } else if (col == 'X') {
                 enemiesPos.push({
-                x: posX,
-                y: posY,
+                    x: posX,
+                    y: posY,
                 });
             }
             game.fillText(emoji, posX, posY);
@@ -175,6 +177,7 @@
         const milliseconds = time % 1000;
         spanTime.innerHTML = `${minutes}:${seconds}.${milliseconds}`;
     }
+
     function showRecord() {
     const record_time = localStorage.getItem('record_time');
     if (record_time) {
@@ -186,7 +189,6 @@
         spanRecord.innerHTML = 'Sin registro aún.';
     }
     }
-
 
     window.addEventListener('keydown', moveKeysDir);
     btnUp.addEventListener('click', moveUp);
