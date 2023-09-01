@@ -45,6 +45,10 @@ button:active {
     transform: scale(0.9);
 }
 
+#btnRefrescar,#btnBorrarRecord{
+    display: none;
+}
+
 .messages {
     display: flex;
     flex-wrap: wrap;

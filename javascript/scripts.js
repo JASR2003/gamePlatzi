@@ -8,6 +8,16 @@
     const spanTime = document.getElementById('time');
     const spanRecord = document.getElementById('record');
     const pResult = document.getElementById('result');
+    const btnRefrescar = document.getElementById('btnRefrescar');
+    const btnBorrarRecord = document.getElementById('btnBorrarRecord');
+
+    function refrescarPagina() {
+        location.reload();
+    }
+    function borrarRecord() {
+        localStorage.removeItem('record_time');
+        alert("Record borrado, reinicia para volver a jugar");
+    }
 
     let canvasSize;
     let elementsSize;
@@ -150,6 +160,8 @@
     function gameWinAndRecordTime() {
         clearInterval(timeInterval);
         console.log('¡Terminaste el juego!');
+        btnRefrescar.style.display = "block";
+        btnBorrarRecord.style.display = "block";
 
         const recordTime = localStorage.getItem('record_time');
         const playerTime = Date.now() - timeStart;
