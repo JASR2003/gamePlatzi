@@ -10,6 +10,7 @@
     const pResult = document.getElementById('result');
     const btnRefrescar = document.getElementById('btnRefrescar');
     const btnBorrarRecord = document.getElementById('btnBorrarRecord');
+    const btnsMove = document.getElementById('btns-move');
 
     function refrescarPagina() {
         location.reload();
@@ -162,6 +163,7 @@
         console.log('¡Terminaste el juego!');
         btnRefrescar.style.display = "block";
         btnBorrarRecord.style.display = "block";
+        btnsMove.style.display = "none";
 
         const recordTime = localStorage.getItem('record_time');
         const playerTime = Date.now() - timeStart;
