@@ -66,6 +66,7 @@ p {
 @media (max-width: 440px) {
     button {
         margin-top: 5px;
+        width: 120px;
     }
     #up , #down {
         margin-left: 100%;
