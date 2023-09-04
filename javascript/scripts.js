@@ -164,6 +164,7 @@
         btnRefrescar.style.display = "block";
         btnBorrarRecord.style.display = "block";
         btnsMove.style.display = "none";
+        canvas.style.display = "none";
 
         const recordTime = localStorage.getItem('record_time');
         const playerTime = Date.now() - timeStart;
