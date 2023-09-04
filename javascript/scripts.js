@@ -149,8 +149,7 @@
     if (lives <= 0) {
         level = 0;
         lives = 3;
-        timeStart = Date.now();
-        timeInterval = setInterval(showTime, 100);
+        timeStart;
     }
 
     playerPos.x = undefined;
