@@ -149,7 +149,7 @@
     if (lives <= 0) {
         level = 0;
         lives = 3;
-        timeStart;
+        timeStart = undefined;
     }
 
     playerPos.x = undefined;
