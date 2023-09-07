@@ -159,6 +159,7 @@
 
     function gameWinAndRecordTime() {
         clearInterval(timeInterval);
+        clearInterval(timeStart);
         console.log('¡Terminaste el juego!');
         btnRefrescar.style.display = "block";
         btnBorrarRecord.style.display = "block";
