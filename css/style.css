@@ -72,11 +72,13 @@ p {
 
 @media (max-width: 440px) {
     button {
-        margin-top: 5px;
-        width: 120px;
+        width: 100px;
+    }
+    .btns button img {
+        width: 70%;
     }
     #up , #down {
-        margin-left: 100%;
-        margin-right: 100%;
+        margin-left: 25%;
+        margin-right: 25%;
     }
 }
