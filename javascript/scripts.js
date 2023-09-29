@@ -11,6 +11,9 @@
     const btnRefrescar = document.getElementById('btnRefrescar');
     const btnBorrarRecord = document.getElementById('btnBorrarRecord');
     const btnsMove = document.getElementById('btns-move');
+    const timeFinalP = document.getElementById('timeFinalP');
+    const timeFinalS = document.getElementById('timeFinal');
+    const timeAndLive = document.getElementById('timeAndLive');
 
     function refrescarPagina() {
         location.reload();
@@ -166,14 +169,14 @@
         btnBorrarRecord.style.display = "block";
         btnsMove.style.display = "none";
         canvas.style.display = "none";
+        timeAndLive.style.display = "none";
         const recordTime = localStorage.getItem('record_time');
         const playerTime = Date.now() - timeStart;
         const time = playerTime;
         const minutes = Math.floor(time / 60000);
         const seconds = Math.floor((time % 60000) / 1000);
         const milliseconds = time % 1000;
-        spanTime.innerHTML = "";
-        spanTime.innerHTML = `${minutes}:${seconds}.${milliseconds}`;
+        timeFinalS.innerHTML = `${minutes}:${seconds}.${milliseconds}`;
 
         if (recordTime) {
             if (recordTime >= playerTime) {
@@ -199,9 +202,6 @@
         const seconds = Math.floor((time % 60000) / 1000);
         const milliseconds = time % 1000;
         spanTime.innerHTML = `${minutes}:${seconds}.${milliseconds}`;
-        if(gameWinAndRecordTime){
-            spanTime.innerHTML = "";
-        }
     }
 
     function showRecord() {
