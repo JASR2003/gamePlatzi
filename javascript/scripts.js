@@ -199,6 +199,9 @@
         const seconds = Math.floor((time % 60000) / 1000);
         const milliseconds = time % 1000;
         spanTime.innerHTML = `${minutes}:${seconds}.${milliseconds}`;
+        if(gameWinAndRecordTime){
+            spanTime.innerHTML = "";
+        }
     }
 
     function showRecord() {
