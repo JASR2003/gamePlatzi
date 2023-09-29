@@ -166,9 +166,14 @@
         btnBorrarRecord.style.display = "block";
         btnsMove.style.display = "none";
         canvas.style.display = "none";
-
         const recordTime = localStorage.getItem('record_time');
         const playerTime = Date.now() - timeStart;
+        const time = playerTime;
+        const minutes = Math.floor(time / 60000);
+        const seconds = Math.floor((time % 60000) / 1000);
+        const milliseconds = time % 1000;
+        spanTime.innerHTML = "";
+        spanTime.innerHTML = `${minutes}:${seconds}.${milliseconds}`;
 
         if (recordTime) {
             if (recordTime >= playerTime) {
