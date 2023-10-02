@@ -116,8 +116,8 @@
     }
 
     function movePlayer(){
-        const giftColX = playerPos.x.toFixed(2) == finishPos.x.toFixed(2);
-        const giftColY = playerPos.y.toFixed(2) == finishPos.y.toFixed(2);
+        const giftColX = playerPos.x.toFixed(0) == finishPos.x.toFixed(0);
+        const giftColY = playerPos.y.toFixed(0) == finishPos.y.toFixed(0);
         const giftCol = giftColX && giftColY;
 
         if (giftCol) {
@@ -125,8 +125,8 @@
         }
 
         const enemiesCol = enemiesPos.find( enemy => {
-            const enemyColX = enemy.x.toFixed(2) == playerPos.x.toFixed(2);
-            const enemyColY = enemy.y.toFixed(2) == playerPos.y.toFixed(2);
+            const enemyColX = enemy.x.toFixed(0) == playerPos.x.toFixed(0);
+            const enemyColY = enemy.y.toFixed(0) == playerPos.y.toFixed(0);
             return enemyColX && enemyColY;
         });
 
