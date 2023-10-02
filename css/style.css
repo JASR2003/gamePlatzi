@@ -22,7 +22,7 @@ canvas {
     background-color: gainsboro;
 }
 
-.btns {
+.btns,.btns-final {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
